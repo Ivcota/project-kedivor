@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  server:
+    build: ./backend
+    ports:
+      - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://db/kedivor?connect_timeout=300
+    depends_on:
+      - db
+  db:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
